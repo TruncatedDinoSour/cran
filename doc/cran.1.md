@@ -49,8 +49,8 @@ depends, D, -D, dep
 By default the config file is in `~/.config/cran.conf` it gets created automatically on first launch.
 
 Configuration variables are:
-- `repos` -- This is an R vector of your mirrors, the first value should be a . (if used as an R vector) and all of your mirrors should be separated by spaces
+
+- `repos` -- This is an R vector of your mirrors seperated by spaces ("https://mirror1.com https://mirror2.com ..."), this will get translated into an R vector
 - `root_required` -- This value controls if cran requires root access to run
 - `r_interpreter` -- The path to your R interpreter
 - `r_flags` -- The flags passed to the R interpreter when running a command, I'd suggest leaving it as-is
-
