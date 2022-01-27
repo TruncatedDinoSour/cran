@@ -31,10 +31,6 @@ unlist() {
 }
 
 repos="$(unlist ". ${repos//\"/\\\"}")"
-
-echo "$repos"
-exit
-
 __VERSION__='1.0'
 
 print_help() {
