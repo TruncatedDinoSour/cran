@@ -14,7 +14,7 @@
 sudo install -Dm755 cran /usr/local/bin
 ```
 
-# Packages
+## Packages
 
 - Linux
   - Gentoo linux: [dev-util/cran::dinolay](https://ari-web.xyz/gentooatom/dev-util/cran)
@@ -23,4 +23,3 @@ sudo install -Dm755 cran /usr/local/bin
 
 Just edit `~/.config/cran.conf` file, all documentation
 in the `man` page.
-
