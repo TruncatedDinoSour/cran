@@ -1,5 +1,40 @@
 #!/usr/bin/env bash
 
+HOME="${HOME:-$(eval echo '~')}"
+
+repos="https://cran.r-project.org/"
+root_required=true
+r_interpreter=/usr/bin/R
+r_flags=(-q --vanilla -e)
+
+new_config() {
+    mkdir -p "$HOME"/.config
+
+    {
+        echo '#!/usr/bin/env bash'
+        echo 'export repos="https://cran.r-project.org/"'
+        echo "export root_required=$root_required"
+        echo "export r_interpreter=$r_interpreter"
+        echo "export r_flags=(${r_flags[*]})"
+    } >"$HOME/.config/cran.conf"
+
+    echo 'Reset config, relaunch cran'
+    exit
+}
+
+source "$HOME/.config/cran.conf" &>/dev/null || (echo "$HOME/.config/cran.conf not found, creating it" && new_config)
+
+unlist() {
+    local str
+    str="$(echo -n "$@" | grep -io '\s.*$' | sed 's/^.//')"
+    echo -n "unlist(strsplit(\"$str\", \" \"), use.names=FALSE)"
+}
+
+repos="$(unlist ". ${repos//\"/\\\"}")"
+
+echo "$repos"
+exit
+
 __VERSION__='1.0'
 
 print_help() {
@@ -17,21 +52,9 @@ print_help() {
     if [[ "$1" ]]; then exit "$1"; fi
 }
 
-unlist() {
-    local str
-    str="$(echo -n "$@" | grep -io '\s.*$' | sed 's/^.//')"
-    echo -n "unlist(strsplit(\"$str\", \" \"), use.names=FALSE)"
-}
-
 read_file() {
     echo -n "$(unlist ". $(xargs echo -n <"$1")")"
 }
-
-## Config (doc/cran_config)
-repos="$(unlist ". https://cran.r-project.org/")"
-root_required=true
-r_interpreter=/usr/bin/R
-r_flags=(-q --vanilla -e)
 
 install_packages() {
     if [[ "$2" ]]; then

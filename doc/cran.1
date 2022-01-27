@@ -3,7 +3,7 @@
 
 .SH NAME
 
-cran \-  an easy package manager for R written in bash
+cran \- an easy package manager for R written in bash
 
 
 .SH SYNOPSIS
@@ -49,6 +49,32 @@ Print all updatable packages
 .TP
 \fBdepends\fR, \fBD\fR, \fB\-D\fR, \fBdep\fR
 Print dependencies in cranfile
+
+.SH "CONFIG FILE"
+
+By default the config file is in
+.IR ~/.config/cran.conf .
+It get created automatically on first launch.
+
+Configuration variables are:
+
+.TP
+\fBrepos\fR
+This is an R vector of your mirrors seperated by spaces (
+.IR "https://mirror1.com https://mirror2.com ..."
+), this will get translated into an R vector
+
+.TP
+\fBroot_required\fR
+This value controls if cran requires root access to run
+
+.TP
+\fBr_interpreter\fR
+The path to your R interpreter
+
+.TP
+\fBr_flags\fR
+The flags passed to the R interpreter when running a command, I'd suggest leaving it as-is
 
 
 .SH EXAMPLES
