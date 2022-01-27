@@ -31,7 +31,7 @@ unlist() {
 }
 
 repos="$(unlist ". ${repos//\"/\\\"}")"
-__VERSION__='1.0'
+__VERSION__='2.0'
 
 print_help() {
     echo "$(basename "$0") commands:"
