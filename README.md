@@ -4,13 +4,16 @@
 
 # Requirements
 
-- R
+- R -- https://www.r-project.org/
+- Bash -- https://www.gnu.org/software/bash/
 
 # Installation
 
 ## Manual
 
 ```bash
+sudo install -Dm0644 doc/cran.1 /usr/share/man/man1/cran.1
+sudo mandb -qf /usr/share/man/man1/cran.1
 sudo install -Dm755 cran /usr/local/bin
 ```
 
