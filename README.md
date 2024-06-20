@@ -1,3 +1,4 @@
+# This repository has been migrated to the self-hosted ari-web Forgejo instance: <https://git.ari.lt/ari/cran>
 # Cran
 
 > An easy R package manager written in bash
